@@ -3,12 +3,12 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const clashDisplay = localFont({
-  src: "../../public/fonts/ClashDisplay-Variable.ttf",
+  src: "/../../public/fonts/ClashDisplay-Variable.ttf",
   variable: "--font-display",
 });
 
 const archivo = localFont({
-  src: "../../public/fonts/Archivo-Variable.ttf",
+  src: "/../../public/fonts/Archivo-Variable.ttf",
   variable: "--font-sans",
 });
 
