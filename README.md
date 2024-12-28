@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Yotor
 
-## Getting Started
+Yotor is a casual wear e-commerce platform tailored for young adults. Built with React and Supabase, Yotor offers a seamless shopping experience with essential features like filters, order management, and payment on delivery.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **User-friendly Shopping Experience**: Explore a range of casual wear with simple navigation and filtering options.
+- **Advanced Filters**: Sort products by category, price range, size, and color.
+- **Authentication**: Secure user authentication powered by Supabase.
+- **Admin Dashboard**:
+  - Manage orders and track inventory.
+  - Add or remove products easily.
+- **Payment on Delivery**: Hassle-free transactions without the need for online payment.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js, Tailwind CSS
+- **Backend**: Supabase
+- **Deployment**: Netlify
+- **Authentication**: Supabase Auth
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+Follow these steps to set up Yotor locally:
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yohannestakata/yotor.git
+   cd yotor
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Install dependencies:
+   ```bash
+   bun install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Configure the environment variables:
+   - Create a `.env` file in the root directory.
+   - Add the following:
+     ```
+     NEXT_PUBLIC_SUPABASE_URL=<your-supabase-url>
+     NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-supabase-anon-key>
 
-## Deploy on Vercel
+     ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Start the development server:
+   ```bash
+   bun run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Access the app at `http://localhost:3000`.
+
+## Deployment
+
+The app is deployed on [Netlify](https://yotor-style.netlify.app/). You can check out the live version [here](#).
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request.
+
+## License
+
+This project is open-source and available under the MIT License.
