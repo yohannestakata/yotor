@@ -1,4 +1,5 @@
-import { Nav, Banner, NewCollections, Promo, CTA } from "../components/home";
+import { Footer } from "@/components/ui";
+import { Nav, Banner, NewCollections, Promo, CTA } from "@/components/home";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <NewCollections />
       <Promo />
       <CTA />
+      <Footer />
     </>
   );
 }

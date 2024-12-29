@@ -16,7 +16,7 @@ export default function LinkButton({
     <Link
       href={href}
       className={twMerge(
-        "rounded-full bg-foreground text-background px-8 py-2 font-semibold leading-none hover:bg-primary/75 transition-colors duration-300",
+        "rounded-full bg-foreground text-background px-8 py-2 font-semibold leading-none hover:opacity-80 transition-opacity duration-100",
         className,
       )}
     >
