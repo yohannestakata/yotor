@@ -1,6 +1,8 @@
+import LinkButton from "../ui/LinkButton";
+
 export default function Banner() {
   return (
-    <div className="mb-16 px-16">
+    <div className="pb-16 px-16">
       <div
         className="aspect-banner mt-8 w-full rounded-3xl bg-primary bg-cover bg-center"
         style={{
@@ -21,12 +23,12 @@ export default function Banner() {
               Find out the best summer collection. Offering our best quality
               product in a Yotor Summer Collection.
             </p>
-            <a
-              href=""
-              className="rounded-full bg-background px-8 py-2 font-semibold leading-none"
-            >
-              Buy Now
-            </a>
+
+            <LinkButton
+              href="/featured"
+              title="Buy Now"
+              className="bg-background text-foreground"
+            />
           </div>
         </div>
       </div>

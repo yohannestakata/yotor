@@ -1,4 +1,5 @@
 import Image from "next/image";
+import LinkButton from "../ui/LinkButton";
 
 export default function Promo() {
   return (
@@ -17,13 +18,12 @@ export default function Promo() {
         Our latest collection, where classic and contemporary styles converge in
         perfect harmony
       </p>
-      <a
-        href=""
-        className="mx-auto mt-4 block w-fit rounded-full bg-primary px-8 py-2 leading-none text-background"
-      >
-        See details
-      </a>
-      <div className="mt-16 grid grid-cols-12 gap-x-4 gap-y-6 px-16"></div>
+
+      <LinkButton
+        title="See Details"
+        href="/products/0145809134134"
+        className="mx-auto mt-4 block w-fit"
+      />
     </section>
   );
 }

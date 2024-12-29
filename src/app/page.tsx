@@ -1,4 +1,4 @@
-import { Nav, Banner, NewCollections, Promo } from "../components/home";
+import { Nav, Banner, NewCollections, Promo, CTA } from "../components/home";
 
 export default function Home() {
   return (
@@ -7,6 +7,7 @@ export default function Home() {
       <Banner />
       <NewCollections />
       <Promo />
+      <CTA />
     </>
   );
 }
