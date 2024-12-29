@@ -13,7 +13,7 @@ const archivo = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Yoto Style",
+  title: "Yotor Style",
   description: "Casual wear and trendy styles for the young and young at heart",
 };
 
