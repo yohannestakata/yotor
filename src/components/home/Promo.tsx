@@ -13,7 +13,7 @@ export default function Promo() {
           className="h-80 w-full rounded-3xl bg-muted object-cover"
         />
       </div>
-      <h2 className="mt-8 text-center text-5xl">Wear to Your Graduation</h2>
+      <h2 className="mt-8 text-center text-5xl">Wear Your Graduation</h2>
       <p className="mx-auto mt-4 w-1/2 text-center text-muted-foreground">
         Our latest collection, where classic and contemporary styles converge in
         perfect harmony

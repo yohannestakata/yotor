@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { describe } from "node:test";
 
 interface CTACardProps {
   bgUrl: string;
