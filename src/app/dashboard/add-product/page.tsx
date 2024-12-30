@@ -74,10 +74,6 @@ export default function AddProductForm() {
 
       const imageUrl = `https://dsfzqjbtjytmzgmfgtbh.supabase.co/storage/v1/object/public/products/${imageData.path}`;
 
-      // Log the session and user for debugging
-      console.log("Current session:", session);
-      console.log("User ID:", session.user.id);
-
       const sizes =
         values.sizes && values.sizes.length > 0 ? values.sizes : null;
       const colors =
