@@ -96,7 +96,7 @@ export default function EditProductCard({
       <form
         onSubmit={form.handleSubmit(handleSave)}
         className={cn(
-          "bg-muted p-6  rounded-3xl flex flex-col gap-6 ",
+          "bg-muted p-6 rounded-3xl flex flex-col gap-6 ",
           edit && "col-span-2 row-start-1",
         )}
       >
@@ -104,7 +104,7 @@ export default function EditProductCard({
           <Image
             src={product.image}
             alt={product.name}
-            className="w-40 h-40 object-cover rounded-3xl aspect-square"
+            className="w-40 h-40 object-cover rounded-3xl aspect-square mix-blend-multiply"
             width={160}
             height={160}
           />

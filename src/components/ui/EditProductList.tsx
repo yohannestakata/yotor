@@ -75,7 +75,7 @@ export default function EditProductList() {
   };
 
   return (
-    <div className="gap-6 grid grid-cols-2">
+    <div className="gap-4 grid grid-cols-2">
       {products?.map((product) => (
         <EditProductCard
           product={product}
