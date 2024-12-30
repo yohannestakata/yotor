@@ -64,6 +64,26 @@ export default function AddProductForm() {
 
   const onSubmit = async (values: FormData) => {
     try {
+      // First check if we have an active session
+      const {
+        data: { session },
+        error: sessionError,
+      } = await supabase.auth.getSession();
+      console.log("Current auth session:", session);
+      console.log("Session user ID:", session?.user?.id);
+
+      if (sessionError) {
+        console.error("Session error:", sessionError);
+        toast.error("Authentication error");
+        return;
+      }
+
+      if (!session) {
+        toast.error("You must be logged in to add products");
+        return;
+      }
+
+      // Continue with image upload
       const imagePath = `${Date.now()}-${values.image[0].name}`;
       const { data: imageData, error: imageError } = await supabase.storage
         .from("products")
@@ -73,9 +93,12 @@ export default function AddProductForm() {
 
       const imageUrl = `https://dsfzqjbtjytmzgmfgtbh.supabase.co/storage/v1/object/public/products/${imageData.path}`;
 
+      // Log the session and user for debugging
+      console.log("Current session:", session);
+      console.log("User ID:", session.user.id);
+
       const sizes =
         values.sizes && values.sizes.length > 0 ? values.sizes : null;
-
       const colors =
         values.colors && values.colors.length > 0
           ? values.colors.split(",").map((color) => color.trim())
@@ -101,16 +124,20 @@ export default function AddProductForm() {
         ])
         .select();
 
-      if (productError) throw productError;
+      if (productError) {
+        console.error("Detailed product error:", productError);
+        throw productError;
+      }
 
       toast.success("Product added successfully!");
+      form.reset();
+      setPreviewImage(null);
       console.log("Product added:", productData);
     } catch (error) {
       console.error("Error adding product:", error);
       toast.error("Failed to add product.");
     }
   };
-
   return (
     <Form {...form}>
       <form
@@ -121,7 +148,7 @@ export default function AddProductForm() {
           <Image
             width={100}
             height={100}
-            src={previewImage || "/placeholder.png"} // Show preview or placeholder
+            src={previewImage || "/placeholder.png"}
             className="h-full object-cover w-full"
             alt="Product Image"
           />
@@ -303,7 +330,9 @@ export default function AddProductForm() {
                         <input
                           type="checkbox"
                           value={size}
-                          checked={field.value?.includes(size)}
+                          checked={field.value?.includes(
+                            size as "XS" | "SM" | "MD" | "LG" | "XL",
+                          )}
                           onChange={(e) => {
                             const value = e.target.value;
                             const isChecked = e.target.checked;

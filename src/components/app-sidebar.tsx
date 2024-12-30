@@ -56,7 +56,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar {...props}>
       <SidebarHeader>
         <div className="leading-none px-2">
-          <div className="text-2xl font-display font-medium">YOTOR</div>
+          <Link href="/" className="text-2xl font-display font-medium">
+            YOTOR
+          </Link>
           <div className="text-muted-foreground">Admin Dashboard</div>
         </div>
       </SidebarHeader>

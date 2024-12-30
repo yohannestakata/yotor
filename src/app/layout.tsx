@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${clashDisplay.variable} ${archivo.variable} antialiased`}
       >
-        <Toaster position="top-right" />
+        <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
         {children}
       </body>
     </html>
