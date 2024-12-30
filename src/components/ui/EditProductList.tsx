@@ -4,6 +4,13 @@ import EditProductCard from "@/components/ui/EditProductCard";
 import supabase from "@/lib/supabase";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 // Define the type for Product
 type Product = {
@@ -74,18 +81,46 @@ export default function EditProductList() {
     }
   };
 
+  const [filterBy, setFilterBy] = useState("All");
+  const [editExpandedId, setEditExpandedId] = useState<string | null>(null);
+
+  let filteredProducts;
+
+  if (filterBy === "All") {
+    filteredProducts = products;
+  } else {
+    filteredProducts = products.filter(
+      (product) => product.category === filterBy,
+    );
+  }
   return (
-    <div className="gap-4 grid grid-cols-2">
-      {products?.map((product) => (
-        <EditProductCard
-          product={product}
-          key={product.id}
-          onSaveAction={(updatedProduct) =>
-            handleSaveAction(updatedProduct as Product, product.id)
-          }
-          onDeleteAction={() => handleDeleteAction(product.id)}
-        />
-      ))}
+    <div>
+      <Select onValueChange={(value) => setFilterBy(value)}>
+        <SelectTrigger className="w-[180px] rounded-full">
+          <SelectValue placeholder="All" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="All">All</SelectItem>
+          <SelectItem value="Men">Men</SelectItem>
+          <SelectItem value="Women">Women</SelectItem>
+          <SelectItem value="Kids">Kids</SelectItem>
+        </SelectContent>
+      </Select>
+
+      <div className="gap-4 grid grid-cols-2 mt-6">
+        {filteredProducts?.map((product) => (
+          <EditProductCard
+            product={product}
+            key={product.id}
+            onSaveAction={(updatedProduct) =>
+              handleSaveAction(updatedProduct as Product, product.id)
+            }
+            onDeleteAction={() => handleDeleteAction(product.id)}
+            editExpandedId={editExpandedId}
+            setEditExpandedIdAction={setEditExpandedId}
+          />
+        ))}
+      </div>
     </div>
   );
 }

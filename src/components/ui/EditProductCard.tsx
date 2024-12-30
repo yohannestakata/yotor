@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/form";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { X } from "lucide-react";
 
 const productSchema = z.object({
@@ -40,6 +40,8 @@ export default function EditProductCard({
   product,
   onSaveAction,
   onDeleteAction,
+  editExpandedId,
+  setEditExpandedIdAction,
 }: {
   product: {
     id: string;
@@ -57,14 +59,14 @@ export default function EditProductCard({
   };
   onSaveAction: (updatedProduct: ProductData) => void;
   onDeleteAction: (productId: string) => void;
+  editExpandedId: string | null;
+  setEditExpandedIdAction: (id: string | null) => void;
 }) {
-  const [edit, setEdit] = useState(false);
-
   useEffect(() => {
-    if (edit) {
+    if (editExpandedId === product.id) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  }, [edit]);
+  }, [editExpandedId, product.id]);
 
   const form = useForm<ProductData>({
     resolver: zodResolver(productSchema),
@@ -84,7 +86,7 @@ export default function EditProductCard({
   });
 
   const handleSave = (values: ProductData) => {
-    setEdit(false);
+    setEditExpandedIdAction(null);
     onSaveAction(values);
   };
 
@@ -98,7 +100,7 @@ export default function EditProductCard({
         onSubmit={form.handleSubmit(handleSave)}
         className={cn(
           "bg-muted p-4 rounded-3xl flex flex-col gap-6 ",
-          edit && "col-span-2 row-start-1",
+          editExpandedId === product.id && "col-span-2 row-start-1",
         )}
       >
         <div className="flex items-start gap-4">
@@ -115,10 +117,10 @@ export default function EditProductCard({
               {product.description}
             </p>
           </div>
-          {!edit ? (
+          {editExpandedId !== product.id ? (
             <Button
               type="button"
-              onClick={() => setEdit(true)}
+              onClick={() => setEditExpandedIdAction(product.id)}
               className="ml-auto rounded-full"
             >
               Edit
@@ -126,7 +128,7 @@ export default function EditProductCard({
           ) : (
             <Button
               type="button"
-              onClick={() => setEdit(false)}
+              onClick={() => setEditExpandedIdAction(null)}
               className="ml-auto"
               variant="ghost"
             >
@@ -135,7 +137,7 @@ export default function EditProductCard({
           )}
         </div>
 
-        {edit && (
+        {editExpandedId === product.id && (
           <div>
             <div className="grid grid-cols-2 gap-6">
               {/* Product Name */}
