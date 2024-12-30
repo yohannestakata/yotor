@@ -64,25 +64,6 @@ export default function AddProductForm() {
 
   const onSubmit = async (values: FormData) => {
     try {
-      // First check if we have an active session
-      const {
-        data: { session },
-        error: sessionError,
-      } = await supabase.auth.getSession();
-      console.log("Current auth session:", session);
-      console.log("Session user ID:", session?.user?.id);
-
-      if (sessionError) {
-        console.error("Session error:", sessionError);
-        toast.error("Authentication error");
-        return;
-      }
-
-      if (!session) {
-        toast.error("You must be logged in to add products");
-        return;
-      }
-
       // Continue with image upload
       const imagePath = `${Date.now()}-${values.image[0].name}`;
       const { data: imageData, error: imageError } = await supabase.storage
