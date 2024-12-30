@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "images.unsplash.com",
       },
+      {
+        hostname: "dsfzqjbtjytmzgmfgtbh.supabase.co",
+      },
     ],
   },
 };
