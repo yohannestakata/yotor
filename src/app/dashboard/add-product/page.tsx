@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -102,11 +103,11 @@ export default function AddProductForm() {
 
       if (productError) throw productError;
 
-      alert("Product added successfully!");
+      toast.success("Product added successfully!");
       console.log("Product added:", productData);
     } catch (error) {
       console.error("Error adding product:", error);
-      alert("Failed to add product.");
+      toast.error("Failed to add product.");
     }
   };
 
