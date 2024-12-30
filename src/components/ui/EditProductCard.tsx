@@ -1,5 +1,4 @@
-// EditProductCard.tsx
-"use client"; // Add this directive to make it a Client Component
+"use client";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -16,7 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import toast from "react-hot-toast";
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -74,12 +73,12 @@ export default function EditProductCard({
       price: product.price,
       description: product.description,
       care_recommendation: product.care_recommendation,
-      category: product.category,
+      category: product.category as "Men" | "Women" | "Kids",
       brand: product.brand,
       collection: product.collection,
       material: product.material,
       stock: product.stock,
-      sizes: product.sizes,
+      sizes: product.sizes as ("XS" | "SM" | "MD" | "LG" | "XL")[],
     },
   });
 
@@ -340,7 +339,9 @@ export default function EditProductCard({
                           <input
                             type="checkbox"
                             value={size}
-                            checked={field.value?.includes(size)}
+                            checked={field.value?.includes(
+                              size as "XS" | "SM" | "MD" | "LG" | "XL",
+                            )}
                             onChange={(e) => {
                               const value = e.target.value;
                               const isChecked = e.target.checked;

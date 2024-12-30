@@ -5,8 +5,24 @@ import supabase from "@/lib/supabase";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
+// Define the type for Product
+type Product = {
+  id: string;
+  name: string;
+  image: string;
+  price: number;
+  description: string;
+  care_recommendation: string;
+  category: string;
+  brand: string;
+  collection: string;
+  material: string;
+  stock: number;
+  sizes: string[];
+};
+
 export default function EditProductList() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]); // Use Product[] as the state type
 
   useEffect(() => {
     fetchProducts();
@@ -21,7 +37,7 @@ export default function EditProductList() {
     setProducts(data);
   };
 
-  const handleSaveAction = async (values, productId) => {
+  const handleSaveAction = async (values: Product, productId: string) => {
     try {
       const { error } = await supabase
         .from("Products")
@@ -65,7 +81,7 @@ export default function EditProductList() {
           product={product}
           key={product.id}
           onSaveAction={(updatedProduct) =>
-            handleSaveAction(updatedProduct, product.id)
+            handleSaveAction(updatedProduct as Product, product.id)
           }
           onDeleteAction={() => handleDeleteAction(product.id)}
         />
