@@ -1,4 +1,4 @@
-import CTACard from "../ui/CTACard";
+import { CTACard } from "@/components/home";
 
 export default function CTA() {
   return (

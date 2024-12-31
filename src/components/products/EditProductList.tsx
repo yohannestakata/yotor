@@ -1,6 +1,6 @@
 "use client";
 
-import EditProductCard from "@/components/ui/EditProductCard";
+import { EditProductCard } from "@/components/products";
 import supabase from "@/lib/supabase";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -96,7 +96,7 @@ export default function EditProductList() {
   return (
     <div>
       <Select onValueChange={(value) => setFilterBy(value)}>
-        <SelectTrigger className="w-[180px] rounded-full">
+        <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="All" />
         </SelectTrigger>
         <SelectContent>

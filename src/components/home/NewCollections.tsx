@@ -1,6 +1,29 @@
+import supabase from "@/lib/supabase";
 import ProductCard from "../ui/ProductCard";
 
-export default function NewCollections() {
+type Product = {
+  id: number; // Ensure this matches your Supabase table schema
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+};
+
+export default async function NewCollections() {
+  const { data: Products, error } = await supabase
+    .from<Product>("Products") // Typing the table
+    .select("*")
+    .limit(6);
+
+  if (error) {
+    console.error("Error fetching products:", error.message);
+    return <div>Error loading new collections.</div>;
+  }
+
+  if (!Products || Products.length === 0) {
+    return <div>No products found.</div>;
+  }
+
   return (
     <section className="py-16">
       <h2 className="text-center text-5xl">New Collections</h2>
@@ -9,42 +32,16 @@ export default function NewCollections() {
         perfect harmony
       </p>
       <div className="mt-16 grid grid-cols-12 gap-x-4 gap-y-6 px-16">
-        <ProductCard
-          title="Classic Crewneck T-Shirt"
-          description="A comfortable, 100% cotton crewneck t-shirt "
-          price={350}
-          src="https://images.unsplash.com/photo-1523914088562-e94af834794e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        />
-        <ProductCard
-          title="Slim Fit Denim Jeans"
-          description="Made with a stretchable cotton blend "
-          price={1200}
-          src="https://images.unsplash.com/photo-1713880442898-0f151fba5e16?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        />
-        <ProductCard
-          title="Hooded Sweatshirt"
-          description="Cozy  with kangaroo pockets and a drawstring hood"
-          price={850}
-          src="https://images.unsplash.com/photo-1523914088562-e94af834794e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        />
-        <ProductCard
-          title="Wrap Dress"
-          description="Elegant yet casual wrap dress"
-          price={1500}
-          src="https://images.unsplash.com/photo-1523914088562-e94af834794e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        />
-        <ProductCard
-          title="Canvas Sneakers"
-          description="Durable, lightweight sneakers "
-          price={950}
-          src="https://images.unsplash.com/photo-1523914088562-e94af834794e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        />
-        <ProductCard
-          title="Casual Chino Pants"
-          description="Lightweight, versatile for a polished yet relaxed look"
-          price={1000}
-          src="https://images.unsplash.com/photo-1523914088562-e94af834794e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        />
+        {Products.map((product) => (
+          <ProductCard
+            key={product.id}
+            title={product.name}
+            description={product.description}
+            price={product.price}
+            src={product.image}
+            id={product.id}
+          />
+        ))}
       </div>
     </section>
   );

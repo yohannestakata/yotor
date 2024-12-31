@@ -3,3 +3,4 @@ export { default as Banner } from "./Banner";
 export { default as NewCollections } from "./NewCollections";
 export { default as Promo } from "./Promo";
 export { default as CTA } from "./CTA";
+export { default as CTACard } from "./CTACard";

@@ -1,10 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProductCardProps {
   title: string;
   description: string;
   price: number;
   src: string;
+  id: string;
 }
 
 export default function ProductCard({
@@ -12,9 +14,10 @@ export default function ProductCard({
   description,
   price,
   src,
+  id,
 }: ProductCardProps) {
   return (
-    <div className="col-span-4">
+    <Link href={`/product-details?productId=${id}`} className="col-span-4">
       <div className="rounded-3xl bg-muted aspect-square overflow-hidden">
         <Image
           src={src}
@@ -26,9 +29,11 @@ export default function ProductCard({
       </div>
       <div className="mt-4 flex flex-col gap-1 leading-none">
         <span className="text-xl">{title}</span>
-        <span className="text-base text-muted-foreground">{description}</span>
+        <span className="text-base text-muted-foreground">
+          {description.slice(0, 80)}
+        </span>
         <span className="text-xl">{price} Br</span>
       </div>
-    </div>
+    </Link>
   );
 }
