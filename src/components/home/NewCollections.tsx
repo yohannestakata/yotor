@@ -1,17 +1,9 @@
 import supabase from "@/lib/supabase";
 import ProductCard from "../ui/ProductCard";
 
-type Product = {
-  id: number; // Ensure this matches your Supabase table schema
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-};
-
 export default async function NewCollections() {
   const { data: Products, error } = await supabase
-    .from<Product>("Products") // Typing the table
+    .from("Products")
     .select("*")
     .limit(6);
 

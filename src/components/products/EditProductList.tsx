@@ -12,8 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// Define the type for Product
-type Product = {
+export type Product = {
   id: string;
   name: string;
   image: string;
