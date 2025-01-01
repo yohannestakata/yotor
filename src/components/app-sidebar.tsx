@@ -37,20 +37,15 @@ const data = {
       ],
     },
     {
-      title: "Analytics",
-      url: "#",
-      items: [{ title: "Sales Report", url: "#" }],
-    },
-    {
       title: "Users",
       url: "#",
-      items: [{ title: "Manage Users", url: "#" }],
+      items: [{ title: "Manage Users", url: "/dashboard/users" }],
     },
   ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const pathname = usePathname(); // Get the current path
+  const pathname = usePathname();
 
   return (
     <Sidebar {...props}>
@@ -69,7 +64,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarGroupContent>
               <SidebarMenu>
                 {group.items.map((item) => {
-                  const isActive = pathname === item.url; // Check if active
+                  const isActive = pathname === item.url;
                   return (
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton asChild isActive={isActive}>

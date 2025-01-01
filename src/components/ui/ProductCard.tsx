@@ -17,7 +17,7 @@ export default function ProductCard({
   id,
 }: ProductCardProps) {
   return (
-    <Link href={`/product-details?productId=${id}`} className="col-span-4 ">
+    <Link href={`/product-details/${id}`} className="col-span-4 ">
       <div className="rounded-3xl bg-muted aspect-square overflow-hidden ">
         <Image
           src={src}

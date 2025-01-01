@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import { Toaster } from "react-hot-toast";
+import { Providers } from "./providers";
 
 const clashDisplay = localFont({
   src: "/../../public/fonts/ClashDisplay-Variable.ttf",
@@ -30,7 +31,7 @@ export default function RootLayout({
         className={`${clashDisplay.variable} ${archivo.variable} antialiased`}
       >
         <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
