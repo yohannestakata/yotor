@@ -29,7 +29,10 @@ export default function OrdersPage() {
       setLoading(true);
       setError(null);
 
-      const { data, error } = await supabase.from("Orders").select("*");
+      const { data, error } = await supabase
+        .from("Orders")
+        .select("*")
+        .eq("status", "completed");
 
       if (error) throw error;
 
