@@ -45,7 +45,7 @@ export default function Footer() {
               <Link href="/collections/Men">Men</Link>
             </li>
             <li>
-              <Link href="/collections/Women">Women</Link>
+              <Link href="/collections/Kids">Women</Link>
             </li>
             <li>
               <Link href="/collections/Kids">Kids</Link>
