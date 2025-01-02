@@ -12,10 +12,10 @@ export default function Nav() {
           <Link href="/collections/Men">Men</Link>
         </li>
         <li>
-          <Link href="/collections/Kids">Women</Link>
+          <Link href="/collections/Women">Women</Link>
         </li>
         <li>
-          <Link href="/collections/Men">Kids</Link>
+          <Link href="/collections/Kids">Kids</Link>
         </li>
       </ul>
       <div className="flex gap-6">
