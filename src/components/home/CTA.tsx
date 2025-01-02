@@ -17,7 +17,7 @@ export default function CTA() {
         <CTACard
           bgUrl="https://images.unsplash.com/photo-1598211664451-1458e4a3e279?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHRlZW4lMjBmYXNoaW9ufGVufDB8fDB8fHww"
           title="Kids"
-          href="/collections/kids"
+          href="/collections/Men"
         />
       </div>
     </section>

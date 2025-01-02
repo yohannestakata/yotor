@@ -42,16 +42,13 @@ export default function Footer() {
           <span className="">Categories</span>
           <ul className="mt-4 space-y-1 text-muted-foreground">
             <li>
-              <Link href="/">Men</Link>
+              <Link href="/collections/Men">Men</Link>
             </li>
             <li>
-              <Link href="/">Women</Link>
+              <Link href="/collections/Women">Women</Link>
             </li>
             <li>
-              <Link href="/">Kids</Link>
-            </li>
-            <li>
-              <Link href="/">New &amp; Featured</Link>
+              <Link href="/collections/Kids">Kids</Link>
             </li>
           </ul>
         </div>
